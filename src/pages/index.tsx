@@ -7,9 +7,24 @@ import { CardsContainer, Wrapper } from "@/styles/Dashboard";
 import { ITools } from "@/types/tools";
 import { useCallback, useEffect, useState } from "react";
 
-export default function Home() {
-  const [ allTools, setAllTools ] = useState<ITools[]>([]);
-  const [ searchedTools, setSearchedTools ] = useState<ITools[]>([])
+export async function getStaticProps () {
+  const response = await api.get("/ferramentas_search.json")
+  const data = response.data;
+
+  return {
+    props: {
+      tools: data 
+    }
+  }
+}
+
+interface IProps {
+  tools: ITools[],
+}
+
+export default function Home({tools}: IProps) {
+  const allTools = tools
+  const [ searchedTools, setSearchedTools ] = useState<ITools[]>(allTools)
   const [ toBeSearched, setToBeSearched ] = useState<string>("")
   const [ showModal, setShowModal ] = useState<boolean>(false)
   const [ toolsPerPage, setToolsPerPage ] = useState<number>(12)
@@ -21,15 +36,6 @@ export default function Home() {
   const startIndex = currentPage * toolsPerPage;
   const endIndex = startIndex + toolsPerPage;
   const currentTools = searchedTools.slice(startIndex, endIndex);
-
-  useEffect(() => {
-    async function getApiData() {
-      const response = await api.get("/ferramentas_search.json");
-      setAllTools(response.data);
-      setSearchedTools(response.data)
-    }
-    getApiData();
-  }, [])
 
   function cleanTextsAndSearch(toolName: string) {
     const cleanText = toolName.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");

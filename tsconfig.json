@@ -22,6 +22,7 @@
       "@/styles/*": ["./src/styles/*"],
       "@/tests/*": ["__tests__/*"],
       "@/api/*": ["./src/api/*"],
+      "@/hooks/*": ["./src/hooks/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "types.d.ts"],
