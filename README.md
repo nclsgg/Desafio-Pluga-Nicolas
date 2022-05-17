@@ -1,3 +1,32 @@
-# Next.js Boilerplate
+# Desafio Pluga - Nicolas Gomes Guadagno
 
-This is a Next.js + Jest boilerplate made by NCLS
+This is an challenge to [Pluga](https://pluga.co/).
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+This challenge consists to consume an API from pluga.
+
+The API return the tools which pluga work with.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+**Used Technologies**
+
+  - React
+  - Next.JS
+  - Axios
+  - Styled Components
+  - Jest
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**To run the application**
+
+```
+npm install
+npm run dev
+```
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+You can see this application in build [here](https://desafio-pluga-nicolas.vercel.app/)
+
